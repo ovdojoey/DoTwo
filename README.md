@@ -1,3 +1,3 @@
-#DoTwo
+# DoTwo
 
-Forget To Do's. *DoTwo* makes goals easy and maintainable. 
+Forget To Do's. *DoTwo* makes goals easy and maintainable.

@@ -1,23 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Text,
+  View,
+} from 'react-native';
+import Router from './components/Router';
+import Loader from './components/Loader';
+
+import { Font } from 'expo';
 
 export default class App extends React.Component {
+  state = {
+    loaded: false,
+  }
+  async componentDidMount() {
+    await Font.loadAsync({
+      'bungee': require('./assets/fonts/Bungee/Bungee-Regular.ttf'),
+    });
+    await Font.loadAsync({
+      'merriweather sans': require('./assets/fonts/Merriweather_Sans/MerriweatherSans-Regular.ttf'),
+    });
+    this.setState({ loaded: true });
+  }
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      this.state.loaded ? (<Router/>) : (<Loader />)
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
